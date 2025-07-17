@@ -12,11 +12,20 @@ jobs:
       - name: Install, build, test # Выполняем необходимые команды
         run: npm install -g newman
       - name: run newman # Выполняем необходимые команды
-        run: newman run TestRail.postman_collection.json -r cli,junit --reporter-junit-export ./reports/newman_junit.xml
+        run: newman run TestRail.postman_collection.json -r cli,junit --reporter-junit-export newman_junit.xml
       - name: TestRail CLI upload results
         if: always()
         run: |
-          pip install trcli
+          pip install trcli \
+            trcli -y \
+            -h https://testdixma.testrail.io/ \
+            --project "Test" \
+            -u mrdixma@gmail.com \
+            -p KO$dg5TN(xp0 \
+            parse_junit \
+            --title "Automated Tests from GitHub workflow" \
+            --run-description ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} \
+            -f "newman_junit.xml"
 
 
           
