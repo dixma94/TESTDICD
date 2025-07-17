@@ -7,8 +7,6 @@ jobs:
     - uses: actions/checkout@v1 
     - name: Use Node.js 8.x # Установим ноду
       uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
 
     - name: Install, build, test # Выполняем необходимые команды
       run: |
