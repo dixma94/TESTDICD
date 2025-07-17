@@ -16,11 +16,11 @@ jobs:
         run: |
           pip install trcli
           trcli -y \
-            -h https://TESTRAIL_INSTANCE.testrail.io/ \
-            --project "PROJECT NAME" \
-            -u USER_EMAIL \
-            -p PASSWORD \
+            -h https://testdixma.testrail.io// \
+            --project "Test" \
+            -u mrdixma@gmail.com \
+            -p KO$dg5TN(xp0 \
             parse_junit \
             --title "Automated Tests from GitHub workflow" \
             --run-description ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} \
-            -f "junit-report.xml"
+            -f "testReport.xml"
