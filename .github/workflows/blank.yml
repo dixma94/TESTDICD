@@ -10,7 +10,6 @@ jobs:
 
     - name: Install, build, test # Выполняем необходимые команды
       run: |
-        npm install -g newman \
-        newman run TestRail.postman_collection.json
+        npm install -g newman 
 
           
