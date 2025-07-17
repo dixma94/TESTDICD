@@ -13,6 +13,10 @@ jobs:
         run: npm install -g newman
       - name: run newman # Выполняем необходимые команды
         run: newman run TestRail.postman_collection.json -r cli,junit --reporter-junit-export ./reports/newman_junit.xml
+      - name: TestRail CLI upload results
+        if: always()
+        run: |
+          pip install trcli
 
 
           
