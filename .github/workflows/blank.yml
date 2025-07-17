@@ -9,8 +9,9 @@ jobs:
       uses: actions/setup-node@v1
 
     - name: Install, build, test # Выполняем необходимые команды
-      run: |
-        npm install -g newman \
-        newman -v
+      run: npm install -g newman
+    - name: run newman # Выполняем необходимые команды
+      run: newman run TestRail.postman_collection.json
+
 
           
