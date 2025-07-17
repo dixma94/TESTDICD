@@ -18,6 +18,6 @@ jobs:
     - name: Install, build, test # Выполняем необходимые команды
       run: |
         npm install -g newman \
-        newman run TestRail.postman_collection.json -r junit --reporter-junit-export ./reports/newman_junit.xml   
+        newman run TestRail.postman_collection.json
 
           
