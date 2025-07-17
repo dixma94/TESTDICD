@@ -10,6 +10,7 @@ jobs:
 
     - name: Install, build, test # Выполняем необходимые команды
       run: |
-        npm install -g newman 
+        npm install -g newman \
+        newman -v
 
           
