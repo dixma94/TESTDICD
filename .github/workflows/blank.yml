@@ -1,41 +1,26 @@
-name: "Ruby on Rails CI"
-on:
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+name: send-results-to-testrail
+on: [workflow_dispatch]
 jobs:
-  lint:
-    # The type of runner that the job will run on
+  send-test-results-to-testrail:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Python setup
+        if: always()
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+      - name: TestRail CLI upload results
+        if: always()
         run: |
-          echo Add other actions to build;
-          echo test, and deploy your project;
-  test:
-      needs: lint
-      runs-on: ubuntu-latest
-      steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!sdasdad
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build;
-          echo test, and deploy your project;
+          pip install trcli
+          trcli -y \
+            -h https://TESTRAIL_INSTANCE.testrail.io/ \
+            --project "PROJECT NAME" \
+            -u USER_EMAIL \
+            -p PASSWORD \
+            parse_junit \
+            --title "Automated Tests from GitHub workflow" \
+            --run-description ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} \
+            -f "junit-report.xml"
