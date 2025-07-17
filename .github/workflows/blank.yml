@@ -15,8 +15,10 @@ jobs:
         if: always()
         run: newman run TestRail.postman_collection2.json -r cli,junit --reporter-junit-export newman_junit.xml
       - name: TestRail
+        if: always()
         run: pip install trcli
       - name: upload results
+        if: always()
         run: | 
           trcli -y \
           -h https://testdixma.testrail.io/ \
