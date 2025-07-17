@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest # ОС на которой запускаемся
     steps: # Шаги выполнения
     - uses: actions/checkout@v1 
-    - name: Use Node.js 16.x # Установим ноду
+    - name: Use Node.js 18.x # Установим ноду
       uses: actions/setup-node@v1
 
     - name: Install, build, test # Выполняем необходимые команды
