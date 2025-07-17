@@ -3,14 +3,9 @@ on: [workflow_dispatch]
 jobs:
   buildAndTest: # Название
     runs-on: ubuntu-latest # ОС на которой запускаемся
-
-    strategy: # Это стратегия запусков
-      matrix: # Запускать это задание с разными параметрами
-        node-version: [8.x, 10.x, 12.x] # Версии ноды
-
     steps: # Шаги выполнения
     - uses: actions/checkout@v1 
-    - name: Use Node.js ${{ matrix.node-version }} # Установим ноду
+    - name: Use Node.js 8.x # Установим ноду
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
