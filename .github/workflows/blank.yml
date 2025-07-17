@@ -12,7 +12,7 @@ jobs:
       - name: Install, build, test # Выполняем необходимые команды
         run: npm install -g newman
       - name: run newman # Выполняем необходимые команды
-        run: newman run TestRail.postman_collection.json -r cli,junit --reporter-junit-export newman_junit.xml
+        run: newman run TestRail.postman_collection2.json -r cli,junit --reporter-junit-export newman_junit.xml
       - name: TestRail
         run: pip install trcli
       - name: upload results
