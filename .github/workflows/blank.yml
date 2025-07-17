@@ -16,7 +16,16 @@ jobs:
       - name: TestRail
         run: pip install trcli
       - name: upload results
-        run: trcli -y -h https://testdixma.testrail.io/ --project "Test" -u mrdixma@gmail.com -p 'KO$dg5TN(xp0' parse_junit --title "Automated Tests from GitHub workflow" --run-description ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} -f "newman_junit.xml"
+        run: | 
+          trcli -y \
+          -h https://testdixma.testrail.io/ \
+          --project "Test" \
+          -u mrdixma@gmail.com \
+          -p 'KO$dg5TN(xp0' \
+          parse_junit \
+          --title "Automated Tests from GitHub workflow" \
+          --run-description ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} \
+          -f "newman_junit.xml"
 
 
           
