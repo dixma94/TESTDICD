@@ -21,5 +21,5 @@ jobs:
           npm install newman-reporter-testrail --global
       - name: run newman # Выполняем необходимые команды
         if: always()
-        run: newman run TestRail.postman_collection.json -r testrail,cli
+        run: newman run TestRail.postman_collection.json -r cli
      
