@@ -1,7 +1,7 @@
 name: anotherNewman
 on: [workflow_dispatch]
 env:
-  TESTRAIL_DOMAIN: https://testdixma.testrail.io 
+  TESTRAIL_DOMAIN: testdixma.testrail.io 
   TESTRAIL_USERNAME: exampleuser 
   TESTRAIL_APIKEY: wjL7lCZkZy65WyNjrv6k-LP5Jojev67OXLQw5P7G9
   TESTRAIL_PROJECTID: P1 
@@ -21,5 +21,5 @@ jobs:
           npm install newman-reporter-testrail --global
       - name: run newman # Выполняем необходимые команды
         if: always()
-        run: newman run TestRail.postman_collection.json -r cli
+        run: newman run TestRail.postman_collection.json -r cli,testrail
      
