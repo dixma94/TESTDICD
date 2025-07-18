@@ -6,7 +6,7 @@ env:
   TESTRAIL_APIKEY: wjL7lCZkZy65WyNjrv6k-LP5Jojev67OXLQw5P7G9
   TESTRAIL_PROJECTID: 1 
   TESTRAIL_TITLE: "Dev-API Regression"
-  TESTRAIL_RUNID: 23
+  TESTRAIL_RUNID: 24
 jobs:
   buildAndTest: # Название
     runs-on: ubuntu-latest # ОС на которой запускаемся
@@ -22,5 +22,5 @@ jobs:
           npm install newman-reporter-testrail --global
       - name: run newman # Выполняем необходимые команды
         if: always()
-        run: newman run TestRail.postman_collection.json -r cli,testrail
+        run: newman run TestRail.postman_collection3.json -r cli,testrail
      
