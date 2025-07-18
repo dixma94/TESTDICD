@@ -7,6 +7,7 @@ env:
   TESTRAIL_PROJECTID: 1 
   TESTRAIL_TITLE: "Dev-API Regression"
   TESTRAIL_SUITEID: 187
+  TESTRAIL_INCLUDEALL: false
 jobs:
   buildAndTest: # Название
     runs-on: ubuntu-latest # ОС на которой запускаемся
