@@ -4,7 +4,7 @@ env:
   TESTRAIL_DOMAIN: testdixma.testrail.io 
   TESTRAIL_USERNAME: mrdixma@gmail.com 
   TESTRAIL_APIKEY: wjL7lCZkZy65WyNjrv6k-LP5Jojev67OXLQw5P7G9
-  TESTRAIL_PROJECTID: P1 
+  TESTRAIL_PROJECTID: 1 
   TESTRAIL_TITLE: "Dev-API Regression"
 jobs:
   buildAndTest: # Название
