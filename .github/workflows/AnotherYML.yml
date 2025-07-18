@@ -1,0 +1,25 @@
+name: anotherNewman
+on: [workflow_dispatch]
+env:
+  TESTRAIL_DOMAIN: https://testdixma.testrail.io 
+  TESTRAIL_USERNAME: exampleuser 
+  TESTRAIL_APIKEY: wjL7lCZkZy65WyNjrv6k-LP5Jojev67OXLQw5P7G9
+  TESTRAIL_PROJECTID: P1 
+  TESTRAIL_TITLE: "Dev-API Regression"
+jobs:
+  buildAndTest: # Название
+    runs-on: ubuntu-latest # ОС на которой запускаемся
+    steps: # Шаги выполнения
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      - name: Install, build, test # Выполняем необходимые команды
+        run: |
+          npm install -g newman \
+          npm install newman-reporter-testrail --global
+      - name: run newman # Выполняем необходимые команды
+        if: always()
+        run: newman run TestRail.postman_collection.json -r testrail,cli
+     
